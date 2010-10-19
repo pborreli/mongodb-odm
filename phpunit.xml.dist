@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit bootstrap="./tests/TestInit.php">
+    <php>
+        <!-- <server name="DOCTRINE_COMMON" value="/path/to/doctrine-common/lib" /> -->
+    </php>
+
+    <testsuites>
+        <testsuite name="Doctrine MongoDB ODM Test Suite">
+            <directory suffix="Test.php">./tests/Doctrine/ODM/MongoDB/Tests/</directory>
+        </testsuite>
+    </testsuites>
+
+    <filter>
+        <whitelist>
+            <directory suffix=".php">./lib/Doctrine/ODM/MongoDB/</directory>
+        </whitelist>
+    </filter>
+</phpunit>
