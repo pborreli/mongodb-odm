@@ -393,13 +393,18 @@ class Query
      * Add element match to query.
      *
      * @param string $value
+     * @param array $options
      * @return Query
      */
-    public function elemMatch($value)
+    public function elemMatch($value, array $options = array())
     {
         $e = explode('.', $this->currentField);
         $fieldName = array_pop($e);
         $embeddedPath = implode('.', $e);
+        if (isset($options['not'])) {
+            $this->query[$embeddedPath][$this->cmd . 'not'][$this->cmd . 'elemMatch'][$fieldName] = $value;
+            return $this;
+        }
         $this->query[$embeddedPath][$this->cmd . 'elemMatch'][$fieldName] = $value;
         return $this;
     }
